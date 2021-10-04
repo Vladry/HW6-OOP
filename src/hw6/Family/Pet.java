@@ -2,13 +2,13 @@ package hw6.Family;
 
 import java.util.Arrays;
 
-public class Pet {
+public abstract class Pet {
 
-    private Species species;
-    private String nickname;
-    private int age;
-    private int trickLevel; //from 0 to 100
-    private String[] habits;
+    protected Species species;
+    protected String nickname;
+    protected int age;
+    protected int trickLevel; //from 0 to 100
+    protected String[] habits;
 
     static {
         System.out.println("загружается новый класс Pet");
@@ -18,32 +18,28 @@ public class Pet {
         System.out.println("создается новый объект Pet");
     }
 
+
     Pet() {
     }
 
-    Pet(Species species, String nickname) {
-        this.species = species;
+    Pet(String nickname) {
         this.nickname = nickname;
     }
 
-    Pet(Species species, String nickname, int age, int trickLevel) {
-        this(species, nickname);
+    Pet(String nickname, int age, int trickLevel) {
         this.age = age;
         this.trickLevel = trickLevel;
     }
-
 
     public void eat() {
         System.out.println("Я кушаю!");
     }
 
-    public void respond() {
-        System.out.println("Привет, хозяин. Я - " + this.nickname + ". Я соскучился!");
-    }
+    public abstract void respond();
 
-    public void foul() {
-        System.out.println("Нужно хорошо замести следы...");
-    }
+//    public default void foul() {
+//        System.out.println("Я - неизвестное животное и я нагадило!");
+//    };
 
     public Species getSpecies() {
         return species;

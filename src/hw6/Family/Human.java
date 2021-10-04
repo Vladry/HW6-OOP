@@ -1,8 +1,12 @@
 package hw6.Family;
 
 import java.util.Arrays;
+import java.util.Random;
 
-public class Human {
+import static hw6.Family.Sex.FEMININE;
+import static hw6.Family.Sex.MASCULINE;
+
+public abstract class Human implements HumanCreator {
 
     private String name;
     private String surname;
@@ -10,7 +14,8 @@ public class Human {
     private int iq; //from 0 to 100;
     private String[][] schedule;
     private Family family;
-   static {
+
+    static {
         System.out.println("загружается новый класс Human");
     }
 
@@ -43,6 +48,24 @@ public class Human {
         this.family = family;
     }
 
+
+    public Human bornChild(Human spouse) {
+        String[][] babySchedule = this.schedule;
+        int babyIq = (this.iq + spouse.iq) / 2;
+        String babyName = "";
+        Sex sex;       // MASCULINE, FEMININE
+        Random random = new Random();
+        int rnd = random.nextInt(2);
+        sex = (rnd == 0) ? MASCULINE : FEMININE;
+        babyName = GenerateRandomName.get(sex);
+        return (sex == MASCULINE) ?
+                new Man("мальчик: " + babyName, this.surname, 2021, babyIq, babySchedule, this.family)
+                : new Woman("девочка: " + babyName, this.surname, 2021, babyIq, babySchedule, this.family);
+    }
+//    return (sex == MASCULINE) ?
+//                new Man(babyName, this.surname, 2021, babyIq, babySchedule, this.family)
+//                : new Woman(babyName, this.surname, 2021, babyIq, babySchedule, this.family);
+//    }
 
     public void greetPet(Pet pet) {
         System.out.println("Привет, " + pet.getNickname());
@@ -145,8 +168,9 @@ public class Human {
                 ", schedule=" + Arrays.deepToString(this.getSchedule()) +
                 "} \n ";
     }
+
     @Override
- protected void finalize(){
+    protected void finalize() {
         System.out.println("Deleting an instance of Human");
     }
 }

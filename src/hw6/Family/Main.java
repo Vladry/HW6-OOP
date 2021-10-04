@@ -2,16 +2,28 @@ package hw6.Family;
 
 public class Main {
     public static void main(String[] args) {
-        int maxInt = Integer.MAX_VALUE;
-        final int divider = 20_000;
-        final int arrSize = 100_000;
-        Human[] people = new Human[arrSize];
-        for (long i = 0; i < arrSize; i++) {
-            Human mom1 = new Human("Taisiya"+i, "Guseva", 1960);
-            if ((i % divider) * divider == 0) {
-                System.out.println("another " + " of Humans has been created!");
+
+        Human dad = new Man("Sergey", "Ivankov", 1980);
+        Human mother = new Woman("Zoya", "Ivankova", 1985);
+        Family family = new Family(dad, mother);
+        dad.setFamily(family);
+        mother.setFamily(family);
+        int totalChildren = 100;
+        Human[] children = new Human[totalChildren];
+        int girlsCounter = 0;
+        for (int i = 0; i < totalChildren; i++) {
+            children[i] = dad.bornChild(mother);
+            System.out.println(children[i].toString());
+            if (children[i].getName().contains("девочка")) {
+                girlsCounter++;
             }
         }
+        System.out.println("всего создано детей: " + totalChildren);
+        System.out.println("из них девочек: " + girlsCounter);
+
+//        System.out.println(dad.toString());
+//        System.out.println(mother.toString());
+//        System.out.println(family.toString());
 
 
     }

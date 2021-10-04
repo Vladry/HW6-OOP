@@ -1,5 +1,5 @@
 package hw6.Family;
 
 public enum Species {
-    CAT, DOG, LIZARD, SQUIRREL
+    DOG, LIZARD, SQUIRREL, FISH, DOMESTICCAT, ROBOCAT, UNKNOWN
 }
