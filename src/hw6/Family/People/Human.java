@@ -2,14 +2,10 @@ package hw6.Family.People;
 
 import hw6.Family.Animals.Pet;
 import hw6.Family.DayOfWeek;
-
 import java.util.Arrays;
 import java.util.Random;
 
-import static hw6.Family.People.Sex.FEMININE;
-import static hw6.Family.People.Sex.MASCULINE;
-
-public abstract class Human implements HumanCreator {
+public abstract class Human {
 
     private String name;
     private String surname;
@@ -32,6 +28,8 @@ public abstract class Human implements HumanCreator {
         schedule[5][0] = DayOfWeek.FRIDAY.name().toLowerCase();
         schedule[6][0] = DayOfWeek.SATURDAY.name().toLowerCase();
 //        System.out.println("создается новый объект Human");
+        Random rnd = new Random();
+        iq = rnd.nextInt(101);
     }
 
     Human() {
@@ -52,23 +50,6 @@ public abstract class Human implements HumanCreator {
     }
 
 
-    public Human bornChild(Human spouse) {
-        String[][] babySchedule = this.schedule;
-        int babyIq = (this.iq + spouse.iq) / 2;
-        String babyName = "";
-        Sex sex;       // MASCULINE, FEMININE
-        Random random = new Random();
-        int rnd = random.nextInt(2);
-        sex = (rnd == 0) ? MASCULINE : FEMININE;
-        babyName = GenerateRandomName.get(sex);
-        return (sex == MASCULINE) ?
-                new Man("мальчик: " + babyName, this.surname, 2021, babyIq, babySchedule, this.family)
-                : new Woman("девочка: " + babyName, this.surname, 2021, babyIq, babySchedule, this.family);
-    }
-//    return (sex == MASCULINE) ?
-//                new Man(babyName, this.surname, 2021, babyIq, babySchedule, this.family)
-//                : new Woman(babyName, this.surname, 2021, babyIq, babySchedule, this.family);
-//    }
 
     public void greetPet(Pet pet) {
         System.out.println("Привет, " + pet.getNickname());

@@ -39,6 +39,11 @@
 
 Литература:
 
+Про шаблон проектирования "Фабрика" (для продвинутого задания):
+https://refactoring.guru/ru/design-patterns/catalog
+https://javarush.ru/groups/posts/2370-pattern-proektirovanija-factory
+
+
 Наследование, полиморфизм, инкапсуляция
 http://java-online.ru/java-oop.xhtml
 Абстрактные классы

@@ -4,7 +4,9 @@ import hw6.Family.Animals.Pet;
 
 import java.util.Arrays;
 
-public class Family {
+import static hw6.Family.People.BabyFactory.deliverABaby;
+
+public class Family implements HumanCreator {
 
     private Human mother;
     private Human father;
@@ -23,6 +25,10 @@ public class Family {
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
+    }
+
+    public Human bornChild() {
+        return deliverABaby(this);
     }
 
     public void addChild(Human child) {
