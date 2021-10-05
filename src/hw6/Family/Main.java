@@ -1,5 +1,10 @@
 package hw6.Family;
 
+import hw6.Family.People.Family;
+import hw6.Family.People.Human;
+import hw6.Family.People.Man;
+import hw6.Family.People.Woman;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -13,7 +18,8 @@ public class Main {
         int girlsCounter = 0;
         for (int i = 0; i < totalChildren; i++) {
             children[i] = dad.bornChild(mother);
-            System.out.println(children[i].toString());
+//            children[i].setFamily(family);
+//            System.out.println(children[i].toString());
             if (children[i].getName().contains("девочка")) {
                 girlsCounter++;
             }
